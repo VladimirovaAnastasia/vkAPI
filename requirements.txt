@@ -1,0 +1,2 @@
+requests==2.23.0
+plotly==4.6.0
