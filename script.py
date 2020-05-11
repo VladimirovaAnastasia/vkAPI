@@ -1,6 +1,5 @@
 import requests
 import datetime
-from pprint import pprint
 import plotly.graph_objects as go
 
 url = 'https://api.vk.com/method/newsfeed.search'
@@ -29,13 +28,12 @@ for item in range(period):
                "v": "5.103"}
 
     response = requests.get(url, params=payload)
-    json = response.json()
+    data = response.json()
     days.append(prev_day.date())
-    total_count.append(json['response']['total_count'])
+    total_count.append(data['response']['total_count'])
 
     current_day = prev_day
 
-pprint(total_count)
 
 fig = go.Figure([go.Bar(x=days, y=total_count)])
 fig.show()
